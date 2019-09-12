@@ -14,6 +14,8 @@
 - vThunder （vThunder）
 - WebサーバCentOS （Server01）
 - WebサーバCentOS （Server02）
+同様の環境を自身の検証環境に構成することで、この演習を同じように実施することも可能です。
+
 
 ## Section 1 - A10 Thunder ADCのAnsibleによる自動構成　基本演習（ネットワーク設定とHTTP仮想サーバの構築）
 
