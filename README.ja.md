@@ -7,17 +7,13 @@
 ## 演習環境
 ![Training environment diagram](./images/Ansible-setup01.png)
 
-クライアント用Window 10へのリモートデスクトップ経由のログイン情報：
-- username: admin
-- password: a10
-
-クライアント用CentOS、Ansible用CentOS、Webサーバ用CentOSへのSSH経由でのログイン情報：
-- username: root
-- password: a10
-
-vThunderへのSSH経由（CLI）、またはHTTPS経由（GUI）でのログイン情報:
-- username: admin
-- password: a10
+演習環境は上記のようになっており、以下から構成されます。
+- クライアント用Window 10 （Client01）
+- クライアント用CentOS （Client02）
+- Ansible実行用CentOS （Ansible）
+- vThunder （vThunder）
+- WebサーバCentOS （Server01）
+- WebサーバCentOS （Server02）
 
 ## Section 1 - A10 Thunder ADCのAnsibleによる自動構成　基本演習（ネットワーク設定とHTTP仮想サーバの構築）
 
