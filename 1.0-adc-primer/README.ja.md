@@ -2,7 +2,16 @@
 
 この演習では、ADCによる負荷分散の基礎について紹介し、演習で利用する環境の事前準備を実施します。
 
-#### A10 Thunder用Ansibleモジュールについて
+## 目次
+
+- [A10 Thunder用Ansibleモジュールについて](#A10 Thunder用Ansibleモジュールについて)
+- [サーバ負荷分散の基礎](#サーバ負荷分散の基礎)
+- [演習環境について](#演習環境について)
+- [Windows 10へのリモートデスクトップ接続](#Windows 10へのリモートデスクトップ接続)
+- [vThunderの構成確認](#vThunderの構成確認)
+- [Ansible実行サーバの環境確認と初期設定](#Ansible実行サーバの環境確認と初期設定)
+
+# A10 Thunder用Ansibleモジュールについて
 
 A10 Thunder用のAnsibleモジュールは、以下のGitHubにあります。
 ほぼ全ての機能の構成管理に対応する1,400以上のモジュールが用意されています。
@@ -15,7 +24,7 @@ Ansibleモジュールを実行する際は、Ansible Coreが動作している�
 このトレーニングではこのAnsibleモジュールの一部を利用して、A10 vThunderのサーバ負荷分散設定に関わる構成変更を行います。
 Ansibleモジュールの実体は、Ansible用CentOSサーバの`/root/a10-ansible/a10_ansible` 以下にあり、このディレクトリ以下で全てのモジュールを確認できます。
 
-#### サーバ負荷分散の基礎
+# サーバ負荷分散の基礎
 
 ADC（Application Delivery Controller）のサーバー負荷分散の主な目的は、
 
@@ -50,7 +59,7 @@ Service Groupの中で負荷分散の方式を設定します（ここでは到�
 ![ADC　HTTP Config Design](../images/Config_Design_http.png)
 
 
-#### 演習環境について
+# 演習環境について
 
 ![Training environment diagram](../images/Ansible-setup01.png)
 
@@ -67,12 +76,12 @@ Window 10クライアントにはRemote Desktopで、Ansible実行用のCentOS�
 
 本演習では、簡単のために全ての操作をroot/admin権限で実施します。
 
-#### Windows 10へのリモートデスクトップ接続
+# Windows 10へのリモートデスクトップ接続
 
 まず、演習環境のWindows 10クライアントへリモートデスクトップ接続します。
 リモートデスクトップ接続用に利用するドメイン名またはIPアドレスについては、演習担当から別途通知されますのでそちらをご利用ください。
 
-#### vThunderの構成確認
+# vThunderの構成確認
 
 リモートデスクトップでWindows 10クライアントにログインできたら、Teratermなどを使ってvThunderにログインします。
 vThunderの管理用IPアドレスにSSHで接続し、ユーザ名とパスワードを入力してログインします。
@@ -125,7 +134,7 @@ vThunder> exit
 ```
 
 
-#### Ansible実行サーバの環境確認
+# Ansible実行サーバの環境確認と初期設定
 
 Windows 10クライアントから、またはインターネット経由でAnsible実行サーバにSSHでrootとしてログインします。
 ログインすると、以下のディレクトリがあることを確認できます（以下のもの以外のファイルやディレクトリはそのままにしておいてください）。
@@ -147,8 +156,6 @@ ansible 2.8.4
 /root/a10-ansible/a10_ansible/library
 [root@ansible ~]#
 ```
-
-### Ansible実行サーバ上での初期設定
 
 Ansible実行サーバ上で実習用のplaybookを格納するディレクトリを作成し、そのディレクトリに移動します。
 ```
