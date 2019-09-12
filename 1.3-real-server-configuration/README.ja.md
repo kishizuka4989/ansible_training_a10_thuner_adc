@@ -1,18 +1,18 @@
-# 演習 1.3 - Real Serverの追加
+# 演習 1.3 - Serverの追加
 
 ## 目次
 
 - [本演習の目的](#本演習の目的)
-- [Real Serverを構成するPlaybookの作成](#Real Serverを構成するPlaybookの作成)
-- [Real Serverを構成するPlaybookの実行](#Real Serverを構成するPlaybookの実行)
+- [Serverを構成するPlaybookの作成](#Serverを構成するPlaybookの作成)
+- [Serverを構成するPlaybookの実行](#Serverを構成するPlaybookの実行)
 
 # 本演習の目的
 
-本演習では、`a10_slb_server`モジュールを利用し、サーバー負荷分散の対象となる実サーバー（Real Server）の設定を行います。
+本演習では、`a10_slb_server`モジュールを利用し、サーバー負荷分散の対象となる実サーバー（Server）の設定を行います。
 
-# Real Serverを構成するPlaybookの作成
+# Serverを構成するPlaybookの作成
 
-Real Serverを設定するために、Ansible実行用サーバーのplaybookディレクトリで、`a10_slb_servers_create.yaml`という名前でPlaybookを作成します。
+Serverを設定するために、Ansible実行用サーバーのplaybookディレクトリで、`a10_slb_servers_create.yaml`という名前でPlaybookを作成します。
 このPlaybookでは、Ansibleモジュールとして`a10_slb_server`を利用します。
 
 ```
@@ -58,13 +58,13 @@ Real Serverを設定するために、Ansible実行用サーバーのplaybookデ
 
 ```
 
-- `name: "{{ item.name }}"`は、モジュールのパラメーターで、`a10_slb_server`で設定するReal serverの名前を指定します。
-- `host: "{{ item.host }}"`は、モジュールのパラメーターで、`a10_slb_server`で設定するReal serverのIPアドレスを指定します。
-- `port_list:`は、リスト形式のモジュールのパラメーターで、`a10_slb_server`で設定するReal serverのサービスがListenするポート番号を`port_number`、プロトコルを`protocol`で指定します。
+- `name: "{{ item.name }}"`は、モジュールのパラメーターで、`a10_slb_server`で設定するServerの名前を指定します。
+- `host: "{{ item.host }}"`は、モジュールのパラメーターで、`a10_slb_server`で設定するServerのIPアドレスを指定します。
+- `port_list:`は、リスト形式のモジュールのパラメーターで、`a10_slb_server`で設定するServerのサービスがListenするポート番号を`port_number`、プロトコルを`protocol`で指定します。
 
 ここまで記述したところで、Playbookを保存しコマンドラインに戻ります。
 
-# Real Serverを構成するPlaybookの実行
+# Serverを構成するPlaybookの実行
 
 このPlaybookを実行すると、以下のようになります。
 
@@ -179,9 +179,9 @@ PLAY RECAP *********************************************************************
 
 ```
 
-Real Serverを設定する部分は冪等性が保たれていることがわかります。
+Serverを設定する部分は冪等性が保たれていることがわかります。
 
-これで、Real Serverの追加が完了しました。
+これで、Serverの追加が完了しました。
 次の演習では、サーバー負荷分散のためのService Groupの設定を行います。
 
 本演習は以上となります。  [トレーニングガイドに戻る](../README.ja.md)
