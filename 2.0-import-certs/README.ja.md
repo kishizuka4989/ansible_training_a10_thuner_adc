@@ -29,7 +29,7 @@ opensslを使い、certsディレクトリ内で自己証明書や秘密鍵を�
 
 # 証明書をインポートするPlaybookの作成
 
-証明書と鍵をインポートするにするために、Ansible実行用サーバーのplaybookディレクトリで、`a10_import_cert_and_key.yaml`という名前でPlaybookを作成します。
+証明書と鍵をインポートするために、Ansible実行用サーバーのplaybookディレクトリで、`a10_import_cert_and_key.yaml`という名前でPlaybookを作成します。
 このPlaybookでは、Ansibleモジュールとして`a10_import`を利用します。
 
 ```
