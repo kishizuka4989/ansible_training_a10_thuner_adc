@@ -188,4 +188,4 @@ a10_port=443
 
 これで、AnsibleでvThunderのADC設定を行う準備ができました。
 
-本演習は以上となります。  [Click here to return to the training guide](../README.ja.md)
+本演習は以上となります。  [トレーニングガイドに戻る](../README.ja.md)
