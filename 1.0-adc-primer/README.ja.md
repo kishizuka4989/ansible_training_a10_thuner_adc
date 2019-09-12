@@ -39,7 +39,7 @@ Service Groupの中で負荷分散の方式を設定します（ここでは到�
 また、別途SNAT用のIPアドレスプールの設定を行い、これも受信ポートに設定を紐づけます。
 こうすることで、Virtual ServerのIPアドレスの80番ポートに来たHTTPトラフィックは、SNATされてサーバーに負荷分散されます。
 
-![ADC　HTTP Config Design](../images/Config_Design_HTTP.png)
+![ADC　HTTP Config Design](../images/Config_Design_http.png)
 
 
 #### 演習環境について
@@ -65,7 +65,7 @@ Window 10サーバーにはRemote Desktopで、Ansible動作用のCentOSサー�
 vThunderの管理用IPアドレスにSSHで接続し、ユーザ名とパスワードを入力してください。
 ThunderのCLIには、Execモード、Enableモード、Configモードの3種類のモードがあります。
 
-![Thunder CLI Modes](../images/Thudner-CLI-Modes.png)
+![Thunder CLI Modes](../images/Thunder-CLI-Modes.png)
 
 CLIにログイン後、以下のように`enable`コマンドを実行するとEnableモードになります。Passwordは設定されていません。
 Enableモードに入ると、プロンプトが`#`に変わります。
