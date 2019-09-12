@@ -3,14 +3,14 @@
 ## 目次
 
 - [本演習の目的](#本演習の目的)
-- [RealServerを構成するPlaybookの作成](#RealServerを構成するPlaybookの作成)
-- [RealServerを構成するPlaybookの実行](#RealServerを構成するPlaybookの実行)
+- [Real Serverを構成するPlaybookの作成](#Real Serverを構成するPlaybookの作成)
+- [Real Serverを構成するPlaybookの実行](#Real Serverを構成するPlaybookの実行)
 
 # 本演習の目的
 
 本演習では、`a10_slb_server`モジュールを利用し、サーバー負荷分散の対象となる実サーバー（Real Server）の設定を行います。
 
-# RealServerを構成するPlaybookの作成
+# Real Serverを構成するPlaybookの作成
 
 Real Serverを設定するために、Ansible実行用サーバーのplaybookディレクトリで、`a10_slb_servers_create.yaml`という名前でPlaybookを作成します。
 このPlaybookでは、Ansibleモジュールとして`a10_slb_server`を利用します。
@@ -64,7 +64,7 @@ Real Serverを設定するために、Ansible実行用サーバーのplaybookデ
 
 ここまで記述したところで、Playbookを保存しコマンドラインに戻ります。
 
-# RealServerを構成するPlaybookの実行
+# Real Serverを構成するPlaybookの実行
 
 このPlaybookを実行すると、以下のようになります。
 
