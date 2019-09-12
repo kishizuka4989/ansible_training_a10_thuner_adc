@@ -14,6 +14,7 @@
 - vThunder （vThunder）
 - WebサーバCentOS （Server01）
 - WebサーバCentOS （Server02）
+
 同様の環境を自身の検証環境に構成することで、この演習を同じように実施することも可能です。
 
 
