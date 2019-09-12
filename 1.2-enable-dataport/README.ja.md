@@ -81,7 +81,7 @@ vThunderの持つ2つのデータポートを連続してenableにし、構成�
 
 ここまで記述したところで、Playbookを保存しコマンドラインに戻ります。
 
-# データポートをenableするPlaybookの作成
+# データポートをenableするPlaybookの実行
 
 このPlaybookを実行すると、以下のようになります。
 
