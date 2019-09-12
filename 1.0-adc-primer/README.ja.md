@@ -4,6 +4,7 @@
 
 A10 Thunder用のAnsibleモジュールは、以下のGitHubにあります。
 ほぼ全ての機能の構成管理に対応する1,400以上のモジュールが用意されています。
+
 [Click here to A10 Ansible Modules on GitHub](https://github.com/a10networks/a10-ansible)
 
 このAnsibleモジュールではA10 Thunderの提供するREST APIであるaXAPIを利用しています。
@@ -15,13 +16,15 @@ Ansibleモジュールの実体は、Ansible用CentOSサーバの`/root/a10-ansi
 #### サーバ負荷分散の基礎
 
 ADC（Application Delivery Controller）のサーバー負荷分散の主な目的は、
--　複数のサーバーへ処理を分散することでサービス全体の処理性能をアップする
--　サーバヘルスモニタによりサービスの可用性を高める
-の2点があります。
+
+- 複数のサーバーへ処理を分散することでサービス全体の処理性能をアップする
+- サーバヘルスモニタによりサービスの可用性を高める
+
+の2点になります。
 
 ![Purpose of ADC](../images/ADC_Purpose.png)
 
-ADCはネットワークスイッチよりも上位のレイヤ4（トランスポート層）からレイヤ7（アプリケーション層）で、主にセッションベースで動作します。
+ADCは主にネットワークスイッチよりも上位のレイヤ4（トランスポート層）からレイヤ7（アプリケーション層）で、セッションベースで動作します。
 
 ADCは負荷分散するサービスに応じてさまざまな構成での導入が可能ですが、このトレーニングでは、ゲートウェイモードでの構成を行います。
 この構成では、クライアントはA10 Thunder ADCの仮想IP（Virtual IP；VIP）にアクセスし、送信元IPが変換されてサーバーに転送されます。
@@ -33,11 +36,14 @@ Thunderはレスポンストラフィックの宛先を元のクライアント�
 ![ADC　Gateway Mode](../images/ADC_Gateway_Mode.png)
 
 この構成を行うために、Thunder ADCでは以下のような設定を行います。
-負荷分散の対象となるサーバーのIPアドレスとポート番号（ここではHTTPの80番）を設定し、これを複数まとめてService Groupというものを構成します。
+
+まず負荷分散の対象となるサーバーのIPアドレスとポート番号（ここではHTTPの80番）を設定し、これを複数まとめてService Groupというものを構成します。
 Service Groupの中で負荷分散の方式を設定します（ここでは到着順に順番にトラフィックを割り振るRound Robin方式を採用しています）。
 クライアントからのトラフィックを受信するVirtual ServerとIPアドレス、および受信ポートを設定し、受信ポートにService Groupを紐づけます。
 また、別途SNAT用のIPアドレスプールの設定を行い、これも受信ポートに設定を紐づけます。
+
 こうすることで、Virtual ServerのIPアドレスの80番ポートに来たHTTPトラフィックは、SNATされてサーバーに負荷分散されます。
+構成のデザインを図示したものが以下になります。
 
 ![ADC　HTTP Config Design](../images/Config_Design_http.png)
 
@@ -47,29 +53,36 @@ Service Groupの中で負荷分散の方式を設定します（ここでは到�
 ![Training environment diagram](../images/Ansible-setup01.png)
 
 本演習での演習環境は上記のようになっています。
-クライアント用のサーバーとして、Windows 10のサーバーとCentOSのサーバーの2台、仮想版のThunderであるvThunderを1台、サーバー負荷分散の対象となるWebサーバー（CentOSサーバ）を2台用意しています。
-上記に加え、Ansibleの動作用にCentOSのサーバーを1台用意しています。
-Window 10サーバーにはRemote Desktopで、Ansible動作用のCentOSサーバーにはSSH経由で外部からのアクセスが可能です。
-上図中に示されているIPアドレスにアクセスすることで、管理用ポートからのログインが可能です。
+
+クライアントとしてWindows 10とCentOSの2台、仮想版のThunderであるvThunderを1台、サーバー負荷分散の対象となるWebサーバー（CentOSサーバ）を2台用意しています。
+上記に加え、Ansibleの実行用にCentOSのサーバーを1台用意しています。
+
+Window 10クライアントにはRemote Desktopで、Ansible実行用のCentOSサーバーにはSSH経由で外部からのアクセスが可能です。
+その他の機器には、Windows 10クライアントまたはAnsible実行用サーバーから上図中に示されている管理用のIPアドレスにアクセスすることで、管理用ポートからのログインが可能です。
+
+データ通信用のネットワークは2つのセグメントに分かれています。
 クライアント用のサーバーとvThunderのethernet 1は192.168.1.0/24のネットワークセグメントに接続されており、vThunderのethernet 2とWebサーバーは192.168.2.0/24のネットワークセグメントに接続されています。
+
 本演習では、簡単のために全ての操作をroot/admin権限で実施します。
 
 #### Windows 10へのリモートデスクトップ接続
 
 まず、演習環境のWindows 10クライアントへリモートデスクトップ接続します。
-リモートデスクトップ接続用のドメイン名とIPアドレスについては、演習担当から別途通知されますのでそちらをご利用ください。
+リモートデスクトップ接続用に利用するドメイン名またはIPアドレスについては、演習担当から別途通知されますのでそちらをご利用ください。
 
 #### vThunderの構成確認
 
 リモートデスクトップでWindows 10クライアントにログインできたら、Teratermなどを使ってvThunderにログインします。
-vThunderの管理用IPアドレスにSSHで接続し、ユーザ名とパスワードを入力してください。
+vThunderの管理用IPアドレスにSSHで接続し、ユーザ名とパスワードを入力してログインします。
+
 ThunderのCLIには、Execモード、Enableモード、Configモードの3種類のモードがあります。
 
 ![Thunder CLI Modes](../images/Thunder-CLI-Modes.png)
 
 CLIにログイン後、以下のように`enable`コマンドを実行するとEnableモードになります。Passwordは設定されていません。
 Enableモードに入ると、プロンプトが`#`に変わります。
-ここで、`show running-config`コマンドを実行すると、現在の設定を確認できます。
+
+ここで`show running-config`コマンドを実行すると、現在の設定を確認できます。
 最初の段階では、主に管理ポート用の設定だけが入っていることがわかります。
 ```
 vThunder> enable
@@ -156,10 +169,11 @@ a10_port=443
 [vThunder]
 10.255.0.1
 ```
+
 `[all:vars]`にPlaybook全般で利用する以下の変数を記述しています。
 - a10_username: vThunderのaXAPIにアクセスするためのユーザー名
 - a10_password: vThunderのaXAPIにアクセスするためのパスワード
--　a10_port: vThunderのaXAPIにアクセスするポート番号
+- a10_port: vThunderのaXAPIにアクセスするポート番号
 
 `[vThunder]`にはPlaybookで操作対象にするThunder（本演習では1台のみ）のIPアドレスを記述しています。
 
