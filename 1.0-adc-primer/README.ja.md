@@ -113,23 +113,37 @@ vThunder> exit
 #### Ansible実行サーバの環境確認
 
 Windows 10クライアントから、またはインターネット経由でAnsible実行サーバにSSHでrootとしてログインします。
-ログインすると、以下のディレクトリがあることを確認できます。
+ログインすると、以下のディレクトリがあることを確認できます（以下のもの以外のファイルやディレクトリはそのままにしておいてください）。
 - a10-ansible： A10用のAnsible Moduleが格納されています
 - example_certs: 応用演習に関するTLS証明書と秘密鍵のサンプルが格納されています
 - example_playbook: 本演習に関するAnsible Playbookのサンプルが格納されています
 
+Ansibleのバージョンや、環境変数の設定と確認を以下のように実施してください。
+```
+[root@ansible ~]# ansible --version
+ansible 2.8.4
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/root/a10-ansible/a10_ansible/library']
+  ansible python module location = /usr/lib/python3.6/site-packages/ansible
+  executable location = /bin/ansible
+  python version = 3.6.8 (default, May  2 2019, 20:40:44) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+[root@ansible ~]# source /etc/profile
+[root@ansible ~]# echo $ANSIBLE_LIBRARY
+/root/a10-ansible/a10_ansible/library
+[root@ansible ~]#
+```
 
 ### Ansible実行サーバ上での初期設定
 
 Ansible実行サーバ上で実習用のplaybookを格納するディレクトリを作成し、そのディレクトリに移動します。
 ```
-[root@Ansible]$ mkdir playbook
-[root@Ansible]$ cd playbook
+[root@ansible ~]# mkdir playbook
+[root@ansible ~]# cd playbook
 ```
 
 ディレクトリ内にAnsibleのインベントリを示すためのファイル`hosts`を作成します。
 ```
-[root@Ansible]$ vi hosts
+[root@ansible playbook]# vi hosts
 ```
 
 `hosts`に以下の内容を記述し保存します。
@@ -148,5 +162,7 @@ a10_port=443
 -　a10_port: vThunderのaXAPIにアクセスするポート番号
 
 `[vThunder]`にはPlaybookで操作対象にするThunder（本演習では1台のみ）のIPアドレスを記述しています。
+
+これで、AnsibleでvThunderのADC設定を行う準備ができました。
 
 本演習は以上となります。  [Click here to return to the training guide](../README.ja.md)
