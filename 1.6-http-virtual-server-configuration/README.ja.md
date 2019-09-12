@@ -197,7 +197,7 @@ Virtual-Serverを設定する部分は冪等性が保たれていることがわ
 
 Virtual-Serverの動作を確認するために、クライアントからVirtual-ServerのVIPにHTTPでアクセスします。
 
-Windows 10クライアントからは、ブラウザ（Chrome、Firefox、Edgeなど）で、https://192.168.1.100/にアクセスします。
+Windows 10クライアントからは、ブラウザ（Chrome、Firefox、Edgeなど）で、http://192.168.1.100/にアクセスします。
 10秒程度間隔をあけて再読み込みを実行すると、実行するたびに負荷分散されてアクセスするWebサーバーが変わることを確認できます。
 
 以下はCentOSクライアントからcurlでアクセスした例になります。
