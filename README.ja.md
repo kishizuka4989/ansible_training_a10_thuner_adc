@@ -1,10 +1,10 @@
 # Ansible Training - A10 Thunder ADC Workshop
 
-![A10workshop](./images/A10_logo.png)
+![A10workshop](./images/A10_training_logo.png)
 
 このドキュメントはA10 Thunder/vThunder　ADCの構成管理をAnsibleで自動化するためのハンズオントレーニングの内容を示しています。
 
-## Diagram
+## 演習環境
 ![Training environment diagram](./images/Ansible-setup01.png)
 
 クライアント用Window 10へのリモートデスクトップ経由のログイン情報：
