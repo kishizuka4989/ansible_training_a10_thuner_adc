@@ -29,7 +29,7 @@ Ansibleモジュールを実行する際は、Ansible Coreが動作している�
 ![How A10 Ansible Modules work](../images/How_A10_Modules_work.png)
 
 このトレーニングではこのAnsibleモジュールの一部を利用して、A10 vThunderのサーバ負荷分散設定に関わる構成変更を行います。
-Ansibleモジュールの実体は、Ansible用CentOSサーバの`/root/a10-ansible/a10_ansible` 以下にあり、このディレクトリ以下で全てのモジュールを確認できます。
+Ansibleモジュールの実体は、Ansible用CentOSサーバの`/root/a10-ansible/a10_ansible`と`/root/a10-ansible/a10_ansible/library`以下にあり、このディレクトリ以下で全てのモジュールを確認できます。
 
 # サーバ負荷分散の基礎
 
@@ -72,7 +72,7 @@ Service Groupの中で負荷分散の方式を設定します（ここでは到�
 
 本演習での演習環境は上記のようになっています。
 
-クライアントとしてWindows 10とCentOSの2台、仮想版のThunderであるvThunderを1台、サーバー負荷分散の対象となるWebサーバー（CentOSサーバ）を2台用意しています。
+クライアントとしてWindows 10とCentOSの各1台、仮想版のThunderであるvThunderを1台、サーバー負荷分散の対象となるWebサーバー（CentOSサーバ）を2台用意しています。
 上記に加え、Ansibleの実行用にCentOSのサーバーを1台用意しています。
 
 Windows 10クライアントにはRemote Desktopで、Ansible実行用のCentOSサーバーにはSSH経由で外部からのアクセスが可能です。
@@ -148,6 +148,12 @@ Windows 10クライアントから、またはインターネット経由でAnsi
 - a10-ansible： A10用のAnsible Moduleが格納されています
 - example_certs: 応用演習に関するTLS証明書と秘密鍵のサンプルが格納されています
 - example_playbook: 本演習に関するAnsible Playbookのサンプルが格納されています
+
+`example_certs`や`example_playbook`の内容は、このトレーニングのGitHubにも格納されています。
+
+[Clieck here to example_certs directory](../example_certs/)
+
+[Clieck here to example_playbook directory](../example_playbook/)
 
 Ansibleのバージョンや、環境変数の設定と確認を以下のように実施してください。
 ```
