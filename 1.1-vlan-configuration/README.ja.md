@@ -19,6 +19,11 @@
 Ansibleを用いた構成の追加と削除の方法、冪等性、および`with_items`を用いた複数の設定を同時に行う方法についても学習します。
 `a10_write_memory`モジュールによるvThunderの構成情報の保存も行います。
 
+この演習では、vThunderのethernet 1とethernet 2に接続されているネットワークが異なっており、それぞれに対し便宜上VLAN IDの10番と20番を割り振ります。
+vThunder内で異なるネットワーク間の通信はフォワーディングされます。
+
+![ADC　Gateway Mode Network Config](../images/Network_Config.png)
+
 # VLANを構成するPlaybookの作成
 
 Ansible実行用サーバーのplaybookディレクトリで、`a10_network_vlan_create.yaml`という名前でPlaybookを作成します。
