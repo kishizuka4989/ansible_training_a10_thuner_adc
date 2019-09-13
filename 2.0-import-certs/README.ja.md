@@ -9,7 +9,17 @@
 
 # 本演習の目的
 
-本演習では、WebサーバーのHTTPS化のために自己証明書を生成し、`a10_import`モジュールを利用して、生成された自己証明書と秘密鍵をThunderにインポートします。
+応用演習では、基本演習で実施したHTTPのサーバー負荷分散に加え、ThunderでのSSL/TLSオフロードの構成を実現します。
+この構成では、ThunderはVirtual-ServerでHTTPS通信を終端し、平文にしたのちにHTTP通信をWebサーバーに転送します。
+処理の負荷が高いSSL/TLSの処理をThunderが実施することで、Webサーバーの負荷を軽減できます。
+また、HTTPのWebサーバーの前段にThunderを配置することでWebサービスのHTTPS化を実現できます。
+
+ThnderでHTTPS通信を終端するためには、Thunder上にサーバー証明書と秘密鍵を配置する必要があります。
+構成のデザインを図示すると以下のようになります。
+
+![ADC　HTTP　and HTTPS Config Design](../images/Config_Design_http_and_https.png)
+
+本演習ではまず、WebサーバーのHTTPS化のために自己証明書を生成し、`a10_import`モジュールを利用して、生成された自己証明書と秘密鍵をThunderにインポートします。
 ここではインポートには（例として）SFTPプロトコルを用います。
 
 # 自己証明書の作成
