@@ -14,6 +14,8 @@
 処理の負荷が高いSSL/TLSの処理をThunderが実施することで、Webサーバーの負荷を軽減できます。
 また、HTTPのWebサーバーの前段にThunderを配置することでWebサービスのHTTPS化を実現できます。
 
+![ADC　SSL/TLS Acceleration](../images/SSL_acceleration.png)
+
 ThnderでHTTPS通信を終端するためには、Thunder上にサーバー証明書と秘密鍵を配置する必要があります。
 構成のデザインを図示すると以下のようになります。
 
