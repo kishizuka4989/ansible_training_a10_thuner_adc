@@ -1,1 +1,1 @@
-This directory contains example playbooks and inventory file for configuring Thunder ADC with Ansible.
+This directory contains example playbooks and inventory file (hosts) for configuring Thunder ADC with Ansible.
