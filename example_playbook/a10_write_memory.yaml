@@ -1,0 +1,17 @@
+---
+- hosts: 10.255.0.1
+  connection: local
+  gather_facts: no
+
+  vars:
+    a10_host: "10.255.0.1"
+  tasks:
+  - name: Write memory
+    a10_write_memory:
+      a10_host: "{{ a10_host }}"
+      a10_username: "{{ a10_username }}"
+      a10_password: "{{ a10_password }}"
+      a10_port: "{{ a10_port }}"
+      state: present
+      partition: all
+

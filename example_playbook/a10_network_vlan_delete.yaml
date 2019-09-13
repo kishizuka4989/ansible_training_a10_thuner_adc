@@ -1,0 +1,22 @@
+---
+- hosts: 10.255.0.1
+  connection: local
+  gather_facts: no
+
+  vars:
+    a10_host: "10.255.0.1"
+  tasks:
+  - name: Delete VLAN
+    a10_network_vlan:
+      a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
+      a10_username: "{{ a10_username }}"
+      a10_password: "{{ a10_password }}"
+      vlan_num: "10"
+      untagged_eth_list:
+        - untagged_ethernet_start: "1"
+          untagged_ethernet_end: "1"
+      ve: "10"
+      state: absent
+      partition: shared
+
