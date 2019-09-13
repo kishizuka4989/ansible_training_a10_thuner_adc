@@ -18,8 +18,15 @@ A10 Thunder用のAnsibleモジュールは、以下のGitHubにあります。
 
 [Click here to A10 Ansible Modules on GitHub](https://github.com/a10networks/a10-ansible)
 
+現状このAnsibleモジュールをGitHubからCloneした場合、モジュールの一部を修正する必要があります。
+修正点などを記述したスタートアップガイドは以下にあります。本演習で利用する環境では、この修正は適用済みです。
+
+[Clieck here to A10 Ansible Modules Startup Guide](./201909_Ansible_Guide.pdf)
+
 このAnsibleモジュールではA10 Thunderの提供するREST APIであるaXAPIを利用しています。
 Ansibleモジュールを実行する際は、Ansible Coreが動作しているサーバにSSHし、ローカルでモジュールを実行することで、aXAPIを通じた構成変更が行われます。
+
+![How A10 Ansible Modules work](../images/How_A10_Modules_work.png)
 
 このトレーニングではこのAnsibleモジュールの一部を利用して、A10 vThunderのサーバ負荷分散設定に関わる構成変更を行います。
 Ansibleモジュールの実体は、Ansible用CentOSサーバの`/root/a10-ansible/a10_ansible` 以下にあり、このディレクトリ以下で全てのモジュールを確認できます。
