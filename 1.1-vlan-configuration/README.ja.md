@@ -460,7 +460,6 @@ Playbookを以下のように記述し保存します。
       a10_port: "{{ a10_port }}"
       state: present
       partition: all
-	  
 ```
 
 このモジュールを実行する場合は、`state: present`である必要があります。
