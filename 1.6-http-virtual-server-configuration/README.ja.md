@@ -39,6 +39,7 @@ Virtual-Serverに仮想IP（VIP）とHTTPでのListenポート80番を割り当�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "vip1"
       ip_address: "192.168.1.100"
       port_list:
@@ -47,17 +48,16 @@ Virtual-Serverに仮想IP（VIP）とHTTPでのListenポート80番を割り当�
           service_group: "sg1"
           pool: "p1"
       state: present
-      partition: shared
 
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `name: "vip1"`は、モジュールのパラメーターで、`a10_slb_virtual_server`で設定するVirtual-Serverの名前を指定します。
