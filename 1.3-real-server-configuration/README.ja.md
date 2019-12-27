@@ -36,6 +36,7 @@ Serverを設定するために、Ansible実行用サーバーのplaybookディ�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "{{ item.name }}"
       host: "{{ item.host }}"
       port_list:
@@ -50,9 +51,10 @@ Serverを設定するために、Ansible実行用サーバーのplaybookディ�
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
 
