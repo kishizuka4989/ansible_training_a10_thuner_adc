@@ -12,13 +12,13 @@
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "{{ item.name }}"
       host: "{{ item.host }}"
       port_list:
         - port_number: "{{ item.port_number }}"
           protocol: "{{ item.protocol }}"
       state: present
-      partition: shared
     with_items:
       - { name: "s1", host: "192.168.2.1", port_number: 80, protocol: "tcp" }
       - { name: "s2", host: "192.168.2.2", port_number: 80, protocol: "tcp" }
@@ -26,9 +26,9 @@
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
