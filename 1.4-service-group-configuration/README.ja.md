@@ -36,6 +36,7 @@ Service-Groupを設定するために、Ansible実行用サーバーのplaybook�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "sg1"
       protocol: "tcp"
       lb_method: "round-robin"
@@ -50,9 +51,10 @@ Service-Groupを設定するために、Ansible実行用サーバーのplaybook�
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
 
