@@ -43,7 +43,6 @@ Serverを設定するために、Ansible実行用サーバーのplaybookディ�
         - port_number: "{{ item.port_number }}"
           protocol: "{{ item.protocol }}"
       state: present
-      partition: shared
     with_items:
       - { name: "s1", host: "192.168.2.1", port_number: 80, protocol: "tcp" }
       - { name: "s2", host: "192.168.2.2", port_number: 80, protocol: "tcp" }
@@ -57,7 +56,6 @@ Serverを設定するために、Ansible実行用サーバーのplaybookディ�
       a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `name: "{{ item.name }}"`は、モジュールのパラメーターで、`a10_slb_server`で設定するServerの名前を指定します。
