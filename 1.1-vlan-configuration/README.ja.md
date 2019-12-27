@@ -79,14 +79,13 @@ Ansible実行用サーバーのplaybookディレクトリで、`a10_network_vlan
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       vlan_num: "10"
       untagged_eth_list:
         - untagged_ethernet_start: "1"
           untagged_ethernet_end: "1"
       ve: "10"
       state: present
-      partition: shared
-  
 ```
 
 - `name: Create VLAN`は、タスクの説明文で、Playbook実行時にこの内容が表示されます。
@@ -95,13 +94,13 @@ Ansible実行用サーバーのplaybookディレクトリで、`a10_network_vlan
 - `a10_port: "{{ a10_port }}"`は、モジュールのパラメーターで、モジュールが接続するvThunderのポートを指定します。ここではインベントリ（hostsファイル）で定義された`a10_port`を参照しています。
 - `a10_username: "{{ a10_username }}"`は、モジュールのパラメーターで、vThunderのaXAPIを実行するユーザー名を指定します。ここではインベントリ（hostsファイル）で定義された`a10_username`を参照しています。
 - `a10_password: "{{ a10_password }}"`は、モジュールのパラメーターで、vThunderのaXAPIを実行するユーザーに対応したパスワードを指定します。ここではインベントリ（hostsファイル）で定義された`a10_password`を参照しています。
+- `a10_protocol: "{{ a10_protocol }}"`は、モジュールのパラメーターで、vThunderのaXAPIを実行する際に利用するプロトコルを指定します。ここではインベントリ（hostsファイル）で定義された`a10_protocol`を参照しています。
 - `vlan_num: "10"`は、モジュールのパラメーターで、`a10_network_vlan`で設定するVLANのID番号を指定します。
 - `untagged_eth_list:`は、リスト形式のモジュールのパラメーターで、`a10_network_vlan`で設定するVLANに対応したethernetの番号を、`untagged_ethernet_start`と`untagged_ethernet_end`で開始番号と終了番号を指定して設定します。
 - `ve: "10"`は、モジュールのパラメーターで、`a10_network_vlan`で設定するVLANに対応する仮想インターフェースのID番号を指定します。VLANのID番号と同一である必要があります。
 - `state: present`は、モジュールのパラメーターで、このタスクで指定された構成がvThunder上に設定されている状態になることを指定するものです。
-- `partition: shared`は、モジュールのパラメーターで、このタスクで指定された構成をvThunderのデフォルトの論理パーティション（shared）に対して構成することを示しています。
 
-`a10_host`、`a10_port`、`a10_username`、`a10_password`、`state`、`partition`の6つのパラメーターは、ほぼ全てのA10 Thunder用のAnsibleモジュールに共通で利用するパラメーターとなります。
+`a10_host`、`a10_port`、`a10_username`、`a10_password`、`a10_protocol`、`state`、の6つのパラメーターは、ほぼ全てのA10 Thunder用のAnsibleモジュールに共通で利用するパラメーターとなります。
 
 ここまで記述したところで、Playbookを保存しコマンドラインに戻ります。
 
@@ -211,13 +210,13 @@ Playbookの内容のうち、`state`を`present`から`absent`に書き換えて
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       vlan_num: "10"
       untagged_eth_list:
         - untagged_ethernet_start: "1"
           untagged_ethernet_end: "1"
       ve: "10"
       state: absent
-      partition: shared
 ```
 
 このPlaybookを実行してみます。
@@ -298,13 +297,13 @@ Playbookの内容を以下のように書き換えて保存します。
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       vlan_num: "{{ item.vlan_num }}"
       untagged_eth_list:
         - untagged_ethernet_start: "{{ item.untagged_ethernet_start }}"
           untagged_ethernet_end: "{{ item.untagged_ethernet_end }}"
       ve: "{{ item.ve }}"
       state: present
-      partition: shared
     with_items:
       - { vlan_num: 10, untagged_ethernet_start: 1, untagged_ethernet_end: 1, ve: 10 }
       - { vlan_num: 20, untagged_ethernet_start: 2, untagged_ethernet_end: 2, ve: 20 }
@@ -455,9 +454,10 @@ Playbookを以下のように記述し保存します。
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
 ```
@@ -563,12 +563,12 @@ end
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       ve_ifnum: "{{ item.ve_ifnum }}"
       address_list:
         - ipv4_address: "{{ item.ipv4_address }}"
           ipv4_netmask: "{{ item.ipv4_netmask }}"
       state: present
-      partition: shared
     with_items:
       - { ve_ifnum: "10", ipv4_address: 192.168.1.254, ipv4_netmask: 255.255.255.0 }
       - { ve_ifnum: "20", ipv4_address: 192.168.2.254, ipv4_netmask: 255.255.255.0 }
@@ -576,9 +576,10 @@ end
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
   
