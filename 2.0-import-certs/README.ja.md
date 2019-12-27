@@ -65,13 +65,13 @@ vThunderからAnsible実行用サーバーにSFTPでアクセスし、証明書�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       ssl_cert: "server.crt"
       use_mgmt_port: True
       overwrite: True
       remote_file: "sftp://root@10.255.0.250/root/certs/server.crt"
       password: "a10"
       state: present
-      partition: shared
 
   - name: Import key
     a10_import:
@@ -79,14 +79,13 @@ vThunderからAnsible実行用サーバーにSFTPでアクセスし、証明書�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       ssl_key: "server.key"
       use_mgmt_port: True
       overwrite: True
       remote_file: "sftp://root@10.255.0.250/root/certs/server.key"
       password: "a10"
       state: present
-      partition: shared
-
 ```
 
 - `ssl_cert: "server.crt"`は、モジュールのパラメーターで、`a10_import`で証明書をインポートする時の、Thunder上でのファイル名を指定します。
