@@ -46,7 +46,6 @@ Service-Groupを設定するために、Ansible実行用サーバーのplaybook�
         - name: "s2"
           port: "80"
       state: present
-      partition: shared
 
   - name: Write memory
     a10_write_memory:
@@ -57,7 +56,6 @@ Service-Groupを設定するために、Ansible実行用サーバーのplaybook�
       a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `name: "sg1"`は、モジュールのパラメーターで、`a10_slb_service_group`で設定するService-Groupの名前を指定します。
