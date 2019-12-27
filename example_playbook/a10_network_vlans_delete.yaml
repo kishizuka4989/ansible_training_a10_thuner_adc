@@ -12,13 +12,13 @@
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       vlan_num: "{{ item.vlan_num }}"
       untagged_eth_list:
         - untagged_ethernet_start: "{{ item.untagged_ethernet_start }}"
           untagged_ethernet_end: "{{ item.untagged_ethernet_end }}"
       ve: "{{ item.ve }}"
       state: absent
-      partition: shared
     with_items:
       - { vlan_num: 10, untagged_ethernet_start: 1, untagged_ethernet_end: 1, ve: 10 }
       - { vlan_num: 20, untagged_ethernet_start: 2, untagged_ethernet_end: 2, ve: 20 }
@@ -26,9 +26,9 @@
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
