@@ -307,7 +307,6 @@ Playbookの内容を以下のように書き換えて保存します。
     with_items:
       - { vlan_num: 10, untagged_ethernet_start: 1, untagged_ethernet_end: 1, ve: 10 }
       - { vlan_num: 20, untagged_ethernet_start: 2, untagged_ethernet_end: 2, ve: 20 }
-
 ```
 
 `with_items`を使うことで、一つのタスクの中で複数の変数を代入して繰り返し処理を実行することができます。
@@ -582,7 +581,6 @@ end
       a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-  
 ```
 
 - `ve_ifnum: "{{ item.ve_ifnum }}"`は、モジュールのパラメーターで、`a10_interface_ve_ip`で設定する仮想インターフェース（VE）のID番号を指定します。
