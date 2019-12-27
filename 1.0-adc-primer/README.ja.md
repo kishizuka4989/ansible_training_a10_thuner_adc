@@ -187,6 +187,7 @@ Ansible実行サーバ上で実習用のplaybookを格納するディレクト�
 a10_username=admin
 a10_password=a10
 a10_port=443
+a10_protocol=https
 
 [vThunder]
 10.255.0.1
@@ -196,6 +197,7 @@ a10_port=443
 - a10_username: vThunderのaXAPIにアクセスするためのユーザー名
 - a10_password: vThunderのaXAPIにアクセスするためのパスワード
 - a10_port: vThunderのaXAPIにアクセスするポート番号
+- a10_protocol: vThunderのaXAPIへのアクセスで利用するプロトコル（httpまたはhttps）
 
 `[vThunder]`にはPlaybookで操作対象にするThunder（本演習では1台のみ）のIPアドレスを記述しています。
 
