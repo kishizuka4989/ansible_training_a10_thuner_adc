@@ -57,6 +57,7 @@ vThunderの持つ2つのデータポートを連続してenableにし、構成�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       ifnum: "{{ item.ifnum }}"
       action: enable
       state: present
@@ -68,9 +69,10 @@ vThunderの持つ2つのデータポートを連続してenableにし、構成�
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
 
