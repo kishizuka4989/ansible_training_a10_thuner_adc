@@ -37,21 +37,21 @@ SSL/TLSテンプレートを作成するために、Ansible実行用サーバー
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "ssl1"
       cert_str: "server.crt"
       key_str: "server.key"
       state: present
-      partition: shared
 
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `name: "ssl1"`は、モジュールのパラメーターで、`a10_slb_template_client_ssl`で構成されるSSL/TLSテンプレートの名前を指定します。
