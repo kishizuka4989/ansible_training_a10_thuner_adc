@@ -40,13 +40,11 @@ Server s2に対して`action: "disable"`を設定することでWebサーバー�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "s2"
       host: "192.168.2.2"
       action: "disable"
       state: present
-      partition: shared
-
-
 ```
 
 - `action: "disable"`は、モジュールのパラメーターで、`a10_slb_server`で設定するServerをDisableにします。
@@ -255,12 +253,11 @@ Server s2に対して`action: "enable"`を設定することでWebサーバー�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "s2"
       host: "192.168.2.2"
       action: "enable"
       state: present
-      partition: shared
-
 ```
 
 ここまで記述したところで、Playbookを保存しコマンドラインに戻ります。
