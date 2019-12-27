@@ -41,6 +41,7 @@ Virtual-Serverを設定するために、Ansible実行用サーバーのplaybook
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       name: "vip1"
       ip_address: "192.168.1.100"
       port_list:
@@ -54,17 +55,16 @@ Virtual-Serverを設定するために、Ansible実行用サーバーのplaybook
           pool: "p1"
           template_client_ssl: "ssl1"
       state: present
-      partition: shared
 
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `port_list:`は、リスト形式のモジュールのパラメーターで、`a10_slb_virtual_server`で設定するVirtual-ServerがListenするポートでSSL/TLSを終端するために紐づけるSSL/TLSテンプレートを`template_client_ssl`で指定します。
