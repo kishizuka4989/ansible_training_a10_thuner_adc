@@ -36,22 +36,22 @@ NATプールとして192.168．2.100のアドレス1つを割り当て、構成�
       a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
+      a10_protocol: "{{ a10_protocol }}"
       pool_name: "p1"
       start_address: "192.168.2.100"
       end_address: "192.168.2.100"
       netmask: "/24"
       state: present
-      partition: shared
 
   - name: Write memory
     a10_write_memory:
       a10_host: "{{ a10_host }}"
+      a10_port: "{{ a10_port }}"
       a10_username: "{{ a10_username }}"
       a10_password: "{{ a10_password }}"
-      a10_port: "{{ a10_port }}"
+      a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `pool_name: "p1"`は、モジュールのパラメーターで、`a10_ip_nat_pool`で設定するNATプールの名前を指定します。
