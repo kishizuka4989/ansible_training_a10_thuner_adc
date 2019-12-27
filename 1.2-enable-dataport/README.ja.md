@@ -61,7 +61,6 @@ vThunderの持つ2つのデータポートを連続してenableにし、構成�
       ifnum: "{{ item.ifnum }}"
       action: enable
       state: present
-      partition: shared
     with_items:
       - { ifnum: 1 }
       - { ifnum: 2 }
@@ -75,7 +74,6 @@ vThunderの持つ2つのデータポートを連続してenableにし、構成�
       a10_protocol: "{{ a10_protocol }}"
       state: present
       partition: all
-
 ```
 
 - `ifnum: "{{ item.ifnum }}"`は、モジュールのパラメーターで、`a10_interface_ethernet`で設定するインターフェース（ethernet）のID番号を指定します。
