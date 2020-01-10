@@ -21,7 +21,7 @@ A10 Thunder用のAnsibleモジュールは、以下のGitHubにあります。
 現状このAnsibleモジュールをGitHubからCloneした場合、モジュールの一部を修正する必要があります。
 修正点などを記述したスタートアップガイドは以下にあります。本演習で利用する環境では、この修正は適用済みです。
 
-[Clieck here to A10 Ansible Modules Startup Guide](./201909_Ansible_Guide.pdf)
+[Clieck here to A10 Ansible Modules Startup Guide](./202001_Ansible_Guide.pdf)
 
 このAnsibleモジュールではA10 Thunderの提供するREST APIであるaXAPIを利用しています。
 Ansibleモジュールを実行する際は、Ansible Coreが動作しているサーバにSSHし、ローカルでモジュールを実行することで、aXAPIを通じた構成変更が行われます。
