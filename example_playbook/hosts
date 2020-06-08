@@ -1,8 +1,0 @@
-[all:vars]
-a10_username=admin
-a10_password=a10
-a10_port=443
-a10_protocol=https
-
-[vThunder]
-10.255.0.1
